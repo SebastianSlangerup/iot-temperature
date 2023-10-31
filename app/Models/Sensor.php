@@ -10,6 +10,11 @@ class Sensor extends Model
 {
     use HasFactory;
 
+    public function data(): BelongsTo
+    {
+        return $this->belongsTo(Data::class);
+    }
+
     public function dataType(): BelongsTo
     {
         return $this->belongsTo(DataType::class);

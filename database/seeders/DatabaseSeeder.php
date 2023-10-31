@@ -42,9 +42,5 @@ class DatabaseSeeder extends Seeder
                 ->for($dataTypes->random())
                 ->create();
         }
-
-        Log::factory()
-            ->count(10000)
-            ->create();
     }
 }

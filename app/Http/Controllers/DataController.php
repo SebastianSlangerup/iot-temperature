@@ -15,7 +15,7 @@ class DataController extends Controller
             return Data::with(['sensor', 'sensor.location', 'sensor.dataType'])->get();
         });
 
-        return response()->json(['Hello' => 'Hello']);
+        return response()->json(['data' => $data]);
     }
 
     public function create(DataRequest $request)

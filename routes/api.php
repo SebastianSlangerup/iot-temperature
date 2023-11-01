@@ -25,7 +25,7 @@ Route::get('/test', function () {
 });
 
 Route::middleware('client')->group(function () {
+    Route::get('/data', [DataController::class, 'index']);
+    Route::post('/data', [DataController::class, 'create']);
 });
 
-Route::get('/data', [DataController::class, 'index']);
-Route::post('/data', [DataController::class, 'create']);

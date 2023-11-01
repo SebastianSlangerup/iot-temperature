@@ -11,9 +11,11 @@ class DataController extends Controller
 {
     public function index()
     {
-        Cache::remember('data', 60, function () {
+        $data = Cache::remember('data', 60, function () {
             return Data::with(['sensor', 'sensor.location', 'sensor.dataType'])->get();
         });
+
+        return response()->json(['data' => $data]);
     }
 
     public function create(DataRequest $request)

@@ -21,6 +21,7 @@ class Setting extends Model
      */
     public function evaluate(DataType $dataType, int $value, Sensor $sensor): void
     {
+        $value = $value / 100;
         $remainingLog = "Reading: $value\r\n Sensor: [$sensor->id] {$sensor->model->name}, at location: {$sensor->location->name}";
 
         // Temperature logging

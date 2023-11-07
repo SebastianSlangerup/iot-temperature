@@ -9,6 +9,7 @@ use App\Models\Log;
 use App\Models\Model;
 use App\Models\Sensor;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -43,6 +44,5 @@ class DatabaseSeeder extends Seeder
                 ->has(Setting::factory()->count(5))
                 ->create();
         }
-
     }
 }

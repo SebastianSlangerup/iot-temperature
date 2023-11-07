@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Sensor extends Model
 {
@@ -13,11 +15,6 @@ class Sensor extends Model
     public function data(): BelongsTo
     {
         return $this->belongsTo(Data::class);
-    }
-
-    public function dataType(): BelongsTo
-    {
-        return $this->belongsTo(DataType::class);
     }
 
     public function location(): BelongsTo
@@ -33,5 +30,10 @@ class Sensor extends Model
     public function logs(): HasMany
     {
         return $this->hasMany(Log::class);
+    }
+
+    public function settings(): BelongsToMany
+    {
+        return $this->belongsToMany(Setting::class);
     }
 }

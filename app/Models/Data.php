@@ -12,6 +12,11 @@ class Data extends Model
         'sensor_id',
     ];
 
+    public function dataType(): BelongsTo
+    {
+        return $this->belongsTo(DataType::class);
+    }
+
     public function sensor(): BelongsTo
     {
         return $this->belongsTo(Sensor::class);

@@ -10,8 +10,12 @@ class DataType extends Model
 {
     use HasFactory;
 
-    public function sensors(): HasMany
+    const TEMPERATURE = 1;
+    const HUMIDITY = 2;
+    const AIR_QUALITY = 3;
+
+    public function data(): HasMany
     {
-        return $this->hasMany(Sensor::class);
+        return $this->hasMany(Data::class);
     }
 }

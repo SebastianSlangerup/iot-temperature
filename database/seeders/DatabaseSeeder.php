@@ -8,6 +8,7 @@ use App\Models\Location;
 use App\Models\Log;
 use App\Models\Model;
 use App\Models\Sensor;
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -39,8 +40,9 @@ class DatabaseSeeder extends Seeder
             Sensor::factory()
                 ->for($models->random())
                 ->for($locations->random())
-                ->for($dataTypes->random())
+                ->has(Setting::factory()->count(5))
                 ->create();
         }
+
     }
 }

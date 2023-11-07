@@ -22,7 +22,8 @@ class DataRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'value' => 'required|decimal:0,4|numeric',
+            'value' => 'required|integer|numeric',
+            'data_type_id' => 'required|integer|numeric',
             'sensor_id' => 'required|integer|numeric'
         ];
     }

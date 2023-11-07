@@ -26,9 +26,8 @@ class DataController extends Controller
 
         $sensor = Sensor::findOrFail($validated['sensor_id']);
         $setting = $sensor->settings()->where('data_type_id', $validated['data_type_id'])->first();
-        $dataType = DataType::findOrFail($validated['data_type_id']);
 
-        $setting->evaluate($dataType, $validated['value'], $sensor);
+        $setting->evaluate($validated['value'], $sensor);
 
         return Data::query()->create($request->validated());
     }

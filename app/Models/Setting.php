@@ -14,34 +14,33 @@ class Setting extends Model
     /**
      * Evaluate the incoming sensor reading, to determine what action to take based on a number of factors.
      *
-     * @param  DataType  $dataType
      * @param  int  $value
      * @param  Sensor  $sensor
      * @return void
      */
-    public function evaluate(DataType $dataType, int $value, Sensor $sensor): void
+    public function evaluate(int $value, Sensor $sensor): void
     {
         $value = $value / 100;
         $remainingLog = "Reading: $value\r\n Sensor: [$sensor->id] {$sensor->model->name}, at location: {$sensor->location->name}";
 
         // Temperature logging
-        if ($value < $this->min && $dataType->id == DataType::TEMPERATURE) {
+        if ($value < $this->min && $this->data_type_id == DataType::TEMPERATURE) {
             Log::alert("Temperature too low... $remainingLog");
-        } elseif ($value > $this->max && $dataType->id == DataType::TEMPERATURE) {
+        } elseif ($value > $this->max && $this->data_type_id == DataType::TEMPERATURE) {
             Log::alert("Temperature too high... $remainingLog");
         }
 
         // Humidity logging
-        elseif ($value < $this->min && $dataType->id == DataType::HUMIDITY) {
+        if ($value < $this->min && $this->data_type_id == DataType::HUMIDITY) {
             Log::alert("Humidity too low... $remainingLog");
-        } elseif ($value > $this->max && $dataType->id == DataType::HUMIDITY) {
+        } elseif ($value > $this->max && $this->data_type_id == DataType::HUMIDITY) {
             Log::alert("Humidity too high... $remainingLog");
         }
 
         // Air quality logging
-        elseif ($value < $this->min && $dataType->id == DataType::AIR_QUALITY) {
+        if ($value < $this->min && $this->data_type_id == DataType::AIR_QUALITY) {
             Log::alert("Air quality too low... $remainingLog");
-        } elseif ($value > $this->max && $dataType->id == DataType::AIR_QUALITY) {
+        } elseif ($value > $this->max && $this->data_type_id == DataType::AIR_QUALITY) {
             Log::alert("Air quality too high... $remainingLog");
         }
     }

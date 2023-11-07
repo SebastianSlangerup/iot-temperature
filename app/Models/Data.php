@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Data extends Model
 {
     protected $fillable = [
+        'data_type_id',
         'value',
         'sensor_id',
     ];

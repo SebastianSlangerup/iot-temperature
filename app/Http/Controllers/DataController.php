@@ -16,7 +16,7 @@ class DataController extends Controller
         $data = Cache::remember('data', 60, function () {
             return Data::with(['dataType', 'sensor.model', 'sensor.location'])
                 ->latest('created_at')
-                ->limit(1000)
+                ->limit(100)
                 ->get();
         });
 

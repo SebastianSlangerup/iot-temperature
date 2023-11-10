@@ -20,6 +20,8 @@ class Setting extends Model
      */
     public function evaluate(int $value, Sensor $sensor): void
     {
+        // Because values are multiplied by 100, before being sent to the database (to prevent floating number madness)
+        // We have to divide the value by 100 again to get the actual reading.
         $value = $value / 100;
         $remainingLog = "Reading: $value\r\n Sensor: [$sensor->id] {$sensor->model->name}, at location: {$sensor->location->name}";
 
